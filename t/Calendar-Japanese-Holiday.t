@@ -190,16 +190,19 @@ ok(cmpHash(getHolidays(2009, 9, 1),
 # Test for isHoliday()
 #
 
-ok(checkHoliday(1949, 2010, 1,  1, '元日'),         'Ganjitsu');
+my $ST = 1948;	# サポート開始年
+my $ED = 2030;
+
+ok(checkHoliday(1949,  $ED, 1,  1, '元日'),         'Ganjitsu');
 
 ok(checkHoliday(1949, 1999, 1, 15, '成人の日'),     'Seijin(-1999)');
-ok(checkHoliday(2000, 2010, 1, 15, ''),             'Seijin(2000- !Happy Monday)');
+ok(checkHoliday(2000,  $ED, 1, 15, ''),             'Seijin(2000- !Happy Monday)');
 ok(checkHoliday(2007, 2007, 1,  8, '成人の日'),     'Seijin(2007 Happy Monday)');
 
-ok(checkHoliday(1948, 1966, 2, 11, ''),             'KenkokuKinen(-1966)');
-ok(checkHoliday(1967, 2010, 2, 11, '建国記念の日'), 'KenkokuKinen(1967-)');
+ok(checkHoliday( $ST, 1966, 2, 11, ''),             'KenkokuKinen(-1966)');
+ok(checkHoliday(1967,  $ED, 2, 11, '建国記念の日'), 'KenkokuKinen(1967-)');
 
-ok(checkHoliday(1948, 1985, 5,  4, ''),             'Kokumin(-1985)');
+ok(checkHoliday( $ST, 1985, 5,  4, ''),             'Kokumin(-1985)');
 # 5/4はかならず国民の休日となるとは限らない
 ok(checkHoliday(1986, 1986, 5,  4, ''),             'Kokumin(1986)'); # 日曜
 ok(checkHoliday(1987, 1987, 5,  4, ''),             'Kokumin(1987)'); # 振替
@@ -207,43 +210,43 @@ ok(checkHoliday(1988, 1988, 5,  4, '国民の休日'),   'Kokumin(1988)'); # 初
 ok(checkHoliday(2006, 2006, 5,  4, '国民の休日'),   'Kokumin(2006)'); # 最後
 
 ok(checkHoliday(1989, 2006, 4, 29, 'みどりの日'),   'Midori(1989-2006)');
-ok(checkHoliday(2007, 2010, 5,  4, 'みどりの日'),   'Midori(2007-)');
-ok(checkHoliday(2007, 2010, 4, 29, '昭和の日'),     'Shouwai(2007-)');
+ok(checkHoliday(2007,  $ED, 5,  4, 'みどりの日'),   'Midori(2007-)');
+ok(checkHoliday(2007,  $ED, 4, 29, '昭和の日'),     'Shouwai(2007-)');
 
 ok(checkHoliday(1949, 1988, 4, 29, '天皇誕生日'),   'TennouTanjoubi(-1988)');
-ok(checkHoliday(1989, 2010,12, 23, '天皇誕生日'),   'TennouTanjoubi(1989-)');
+ok(checkHoliday(1989,  $ED,12, 23, '天皇誕生日'),   'TennouTanjoubi(1989-)');
 
-ok(checkHoliday(1949, 2010, 5,  3, '憲法記念日'),   'Kenpou');
+ok(checkHoliday(1949,  $ED, 5,  3, '憲法記念日'),   'Kenpou');
 
-ok(checkHoliday(1949, 2010, 5,  5, 'こどもの日'),   'Kodomo');
+ok(checkHoliday(1949,  $ED, 5,  5, 'こどもの日'),   'Kodomo');
 
-ok(checkHoliday(1948, 1995, 7, 20, ''),             'Umi(-1995)');
+ok(checkHoliday( $ST, 1995, 7, 20, ''),             'Umi(-1995)');
 ok(checkHoliday(1996, 2002, 7, 20, '海の日'),       'Umi(1996-2002)');
 ok(checkHoliday(2003, 2003, 7, 20, ''),             'Umi(2003 !Happy Monday)');
 ok(checkHoliday(2007, 2007, 7, 16, '海の日'),       'Umi(2007 Happy Monday)');
 
-ok(checkHoliday(1948, 1965, 9, 15, ''),             'Keirou(-1965)');
+ok(checkHoliday( $ST, 1965, 9, 15, ''),             'Keirou(-1965)');
 ok(checkHoliday(1966, 2002, 9, 15, '敬老の日'),     'Keirou(1966-2002)');
 # 2003年は第3月曜日がたまたま15日なので2004年でチェック
 ok(checkHoliday(2004, 2004, 9, 15, ''),             'Keirou(2004 !Happy Monday)');
 ok(checkHoliday(2007, 2007, 9, 17, '敬老の日'),     'Keirou(2007 Happy Monday)');
 
-ok(checkHoliday(1948, 1965,10, 10, ''),             'Taiiku(-1965)');
+ok(checkHoliday( $ST, 1965,10, 10, ''),             'Taiiku(-1965)');
 ok(checkHoliday(1966, 1999,10, 10, '体育の日'),     'Taiiku(1966-1999)');
 ok(checkHoliday(2000, 2000,10, 10, ''),             'Taiiku(2000 !Happy Monday)');
 ok(checkHoliday(2007, 2007,10, 8, '体育の日'),      'Taiiku(2007 Happy Monday)');
 
-ok(checkHoliday(1948, 2010,11,  3, '文化の日'),     'Bunka');
+ok(checkHoliday( $ST,  $ED,11,  3, '文化の日'),     'Bunka');
 
-ok(checkHoliday(1948, 2010,11, 23, '勤労感謝の日'), 'KinrouKansha');
+ok(checkHoliday( $ST,  $ED,11, 23, '勤労感謝の日'), 'KinrouKansha');
 
 ok(checkHoliday(1959, 1959, 4, 10, '皇太子明仁親王の結婚の儀'), 'Exceptional');
 ok(checkHoliday(1989, 1989, 2, 24, '昭和天皇の大喪の礼'),       'Exceptional');
 ok(checkHoliday(1990, 1990,11, 12, '即位礼正殿の儀'),           'Exceptional');
 ok(checkHoliday(1993, 1993, 6,  9, '皇太子徳仁親王の結婚の儀'), 'Exceptional');
 
-ok(checkHoliday(1948, 2015, 8, 11, ''), 'Yama(-2015)');
-ok(checkHoliday(2016, 2020, 8, 11, '山の日'), 'Yama(2016-2020)');
+ok(checkHoliday( $ST, 2015, 8, 11, ''),             'Yama(-2015)');
+ok(checkHoliday(2016,  $ED, 8, 11, '山の日'),       'Yama(2016-2020)');
 
 ok(checkShunbunShuubun(), 'Shunbun/Shuubun');
 
