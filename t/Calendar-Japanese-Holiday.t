@@ -2,7 +2,7 @@
 
 use utf8;
 
-use Test::More tests => 58;
+use Test::More tests => 60;
 BEGIN { use_ok('Calendar::Japanese::Holiday') };
 
 #########################
@@ -241,6 +241,9 @@ ok(checkHoliday(1959, 1959, 4, 10, '皇太子明仁親王の結婚の儀'), 'Exc
 ok(checkHoliday(1989, 1989, 2, 24, '昭和天皇の大喪の礼'),       'Exceptional');
 ok(checkHoliday(1990, 1990,11, 12, '即位礼正殿の儀'),           'Exceptional');
 ok(checkHoliday(1993, 1993, 6,  9, '皇太子徳仁親王の結婚の儀'), 'Exceptional');
+
+ok(checkHoliday(1948, 2015, 8, 11, ''), 'Yama(-2015)');
+ok(checkHoliday(2016, 2020, 8, 11, '山の日'), 'Yama(2016-2020)');
 
 ok(checkShunbunShuubun(), 'Shunbun/Shuubun');
 
