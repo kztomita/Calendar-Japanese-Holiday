@@ -13,7 +13,7 @@ our @ISA = qw(Exporter);
 
 our @EXPORT = qw(getHolidays isHoliday);
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 
 our $FurikaeStr = '振替';
