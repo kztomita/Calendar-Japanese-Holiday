@@ -329,7 +329,8 @@ sub getHolidays {
     # 国民の休日
     if ($year >= 1986) {
 	# 祝日に挟まれた平日を探す (祝日A - 平日B - 祝日C)
-	while (my ($day, $name) = each %holidays) {
+	my %holidays_original = %holidays;
+	while (my ($day, $name) = each %holidays_original) {
 	    if ( exists $holidays{$day + 2} &&
 		 !exists $holidays{$day + 1}) {
 		my $wday = (localtime(timelocal(0, 0, 0,
