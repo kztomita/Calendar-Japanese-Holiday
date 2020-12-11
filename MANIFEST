@@ -1,6 +1,7 @@
 Changes
+lib/Calendar/Japanese/Holiday.pm
 Makefile.PL
 MANIFEST
 README
 t/Calendar-Japanese-Holiday.t
-lib/Calendar/Japanese/Holiday.pm
+tools/get_holidays.pl
